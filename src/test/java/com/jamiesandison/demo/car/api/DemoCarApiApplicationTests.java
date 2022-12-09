@@ -15,7 +15,6 @@ class DemoCarApiApplicationTests {
 		String response = String.valueOf(controller.getResponse());
 
 		Assertions.assertEquals("200 OK", response);
-		Assertions.assertFalse(response.equals("400"));
 	}
 
 }
