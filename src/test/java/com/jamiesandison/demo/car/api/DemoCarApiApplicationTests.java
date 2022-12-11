@@ -4,28 +4,23 @@ import com.jamiesandison.demo.car.api.Controller.Controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 
 @SpringBootTest
 class DemoCarApiApplicationTests {
 
+	/**
+	 * need to fix this failing test below
+	 */
 	@Test
-	void statusResponse_httpResponse_200() {
+	public void privateStatusTest() {
 
 		Controller controller = new Controller();
-		String response = String.valueOf(controller.getResponse());
 
-		Assertions.assertEquals("200 OK", response);
-	}
-
-	@Test
-	public void responseEntityTest() {
-
-		Controller controller = new Controller();
-		ResponseEntity<String> response = controller.response();
-
-		Assertions.assertEquals("200", response);
-
+		ResponseEntity<String> stringResponseEntity = controller.privateStatusResponse();
+		Assertions.assertEquals(HttpStatus.OK, stringResponseEntity);
 	}
 
 }
