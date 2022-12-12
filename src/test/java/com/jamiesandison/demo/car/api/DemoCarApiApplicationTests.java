@@ -11,9 +11,6 @@ import org.springframework.http.ResponseEntity;
 @SpringBootTest
 class DemoCarApiApplicationTests {
 
-	/**
-	 * need to fix this failing test below
-	 */
 	@Test
 	public void privateStatusTest() {
 
