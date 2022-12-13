@@ -4,9 +4,9 @@ import io.cucumber.java.en.When;
 
 public class StepDefinitions {
 
-    @Given("localhost:{int}\\/private\\/status")
+    @Given("localhost:{8080}\\/private\\/status")
     public void localhost_private_status(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
+
         throw new io.cucumber.java.PendingException();
     }
 
