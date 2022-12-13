@@ -1,19 +1,29 @@
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.Assertions;
+import org.springframework.http.HttpStatus;
+
+import static io.restassured.RestAssured.given;
 
 public class StepDefinitions {
+    private static Response response;
+    private static String jsonString;
 
-    @Given("localhost:{8080}\\/private\\/status")
-    public void localhost_private_status(Integer int1) {
-
-        throw new io.cucumber.java.PendingException();
+    @Given("client sends a request to {string} endpoint")
+    public void localhost_private_status(String endpoint) {
+        RequestSpecification request = given();
+        request.header("Content-Type", "application/json");
+        response = request.get(endpoint);
     }
 
-    @When("private response returned")
-    public void private_response_returned() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("response should be {string} with HttpStatus {int}")
+    public void private_response_returned(String body, int status) {
+        jsonString = response.asString();
+        Assertions.assertEquals(HttpStatus.OK, response.getBody().asString());
+        Assertions.assertEquals(200, response.getStatusCode());
     }
 
     @When("press enter")
