@@ -1,10 +1,12 @@
+package steps;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Assertions;
-import org.springframework.http.HttpStatus;
 
 import static io.restassured.RestAssured.given;
 
@@ -22,20 +24,8 @@ public class StepDefinitions {
     @Then("response should be {string} with HttpStatus {int}")
     public void private_response_returned(String body, int status) {
         jsonString = response.asString();
-        Assertions.assertEquals(HttpStatus.OK, response.getBody().asString());
-        Assertions.assertEquals(200, response.getStatusCode());
-    }
-
-    @When("press enter")
-    public void press_enter() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("response should be {string} with HttpStatus {int}")
-    public void response_should_be_with_http_status(String string, Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assertions.assertEquals(body, jsonString);
+        Assertions.assertEquals(status, response.getStatusCode());
     }
 
 }

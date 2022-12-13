@@ -1,1 +1,3 @@
 rootProject.name = 'demo-car-api'
+include 'functional'
+
