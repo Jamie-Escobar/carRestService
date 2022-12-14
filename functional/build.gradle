@@ -32,7 +32,7 @@ task cucumberCli() {
             args = [
                     '--plugin', 'pretty',
                     '--plugin', 'html:target/cucumber-report.html',
-                    '--glue', 'com.baeldung.cucumber',
+                    '--glue', 'steps',
                     'src/test/resources']
         }
     }
