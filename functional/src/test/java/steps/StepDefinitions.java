@@ -38,6 +38,13 @@ public class StepDefinitions {
 
     }
 
+    @Given("I have the following car")
+    public void i_have_the_following_car(List<Map<String, String>> dataTable) throws JsonProcessingException {
+
+        requestData = mapper.writeValueAsString(dataTable);
+    }
+
+
     @Then("response should be {string} with HttpStatus {int}")
     public void private_response_returned(String body, int status) {
         jsonString = response.asString();
@@ -51,11 +58,6 @@ public class StepDefinitions {
         Assertions.assertEquals(status, response.getStatusCode());
     }
 
-    @Given("I have the following car")
-    public void i_have_the_following_car(List<Map<String, String>> dataTable) throws JsonProcessingException {
-
-        requestData = mapper.writeValueAsString(dataTable);
-    }
 
     @And("response body should contain key {string} and value should be {string}")
     public void responseBodyShouldContainKeyAndValueShouldBe(String expectedKey, String  expectedVal) throws JsonProcessingException {

@@ -1,4 +1,4 @@
-package com.jamiesandison.demo.car.api.ControllerTests;
+package com.jamiesandison.demo.car.api.controller;
 
 import com.jamiesandison.demo.car.api.Controller.Controller;
 import org.junit.jupiter.api.Assertions;
