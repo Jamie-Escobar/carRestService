@@ -29,6 +29,7 @@ task cucumberCli() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            jvmArgs = ['-Dspring.devtools.restart.enabled=false']
             args = [
                     '--plugin', 'pretty',
                     '--plugin', 'html:target/cucumber-report.html',
