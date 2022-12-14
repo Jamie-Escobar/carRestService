@@ -24,6 +24,7 @@ public class CarsController {
     @PostMapping("cars/admin")
     public ResponseEntity<Map<String, String>> addCars(@RequestBody List<Car> carList) {
 
+        carService.addCar(carList);
         return new ResponseEntity<>(Map.of("description", "Database updated"), HttpStatus.CREATED);
     }
 }

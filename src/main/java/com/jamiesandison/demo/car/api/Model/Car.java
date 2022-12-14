@@ -1,9 +1,6 @@
 package com.jamiesandison.demo.car.api.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Car {
@@ -13,6 +10,7 @@ public class Car {
     private Long id;
     private String brand;
     private String model;
+    @Column(name = "year_build")
     private int year;
     private int price;
     private int mileage;
