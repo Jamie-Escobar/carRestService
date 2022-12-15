@@ -1,7 +1,7 @@
 package com.jamiesandison.demo.car.api.service;
 
-import com.jamiesandison.demo.car.api.Model.Car;
-import com.jamiesandison.demo.car.api.repository.CarRepo;
+import com.jamiesandison.demo.car.api.model.Car;
+import com.jamiesandison.demo.car.api.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,15 +11,15 @@ import java.util.List;
 public class CarService {
 
     @Autowired
-    private final CarRepo carRepo;
+    private final CarRepository carRepository;
 
-    public CarService(CarRepo carRepo) {
-        this.carRepo = carRepo;
+    public CarService(CarRepository carRepository) {
+        this.carRepository = carRepository;
     }
 
     public void addCar(List<Car> carList) {
 
-        carRepo.saveAll(carList);
+        carRepository.saveAll(carList);
     }
 
 }

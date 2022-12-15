@@ -1,4 +1,4 @@
-package com.jamiesandison.demo.car.api.Controller;
+package com.jamiesandison.demo.car.api.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

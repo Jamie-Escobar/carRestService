@@ -1,7 +1,6 @@
 package com.jamiesandison.demo.car.api.controller;
 
-import com.jamiesandison.demo.car.api.Controller.CarsController;
-import com.jamiesandison.demo.car.api.Model.Car;
+import com.jamiesandison.demo.car.api.model.Car;
 import com.jamiesandison.demo.car.api.service.CarService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,8 +19,7 @@ import java.util.Map;
 public class CarsControllerTest {
 
     @InjectMocks
-    private CarsController controller; // sut = system under test
-
+    private CarsController controller; // naming convention instead of controller (sut) = system under test
     @Mock
     private CarService carService;
 
@@ -43,5 +41,8 @@ public class CarsControllerTest {
 
         Mockito.verify(carService, Mockito.times(1)).addCar(Mockito.anyList());
     }
+
+
+    // next steps service unit tests
 
 }

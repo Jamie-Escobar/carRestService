@@ -1,6 +1,5 @@
 package com.jamiesandison.demo.car.api.controller;
 
-import com.jamiesandison.demo.car.api.Controller.Controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.jamiesandison.demo.car.api.Controller;
+package com.jamiesandison.demo.car.api.controller;
 
-import com.jamiesandison.demo.car.api.Model.Car;
+import com.jamiesandison.demo.car.api.model.Car;
 import com.jamiesandison.demo.car.api.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

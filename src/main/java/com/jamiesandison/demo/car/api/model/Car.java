@@ -1,4 +1,4 @@
-package com.jamiesandison.demo.car.api.Model;
+package com.jamiesandison.demo.car.api.model;
 
 import jakarta.persistence.*;
 
