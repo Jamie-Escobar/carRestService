@@ -4,11 +4,18 @@ import com.jamiesandison.demo.car.api.controller.CarsController;
 import com.jamiesandison.demo.car.api.model.Car;
 import com.jamiesandison.demo.car.api.repository.CarRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+
+@ExtendWith(MockitoExtension.class)
 public class CarServiceTest {
 
     @InjectMocks
@@ -18,16 +25,14 @@ public class CarServiceTest {
 
     @Test
     void addingCarTest() {
-
-        carService.addCar(List.of(
+        List<Car> carList = List.of(
                 new Car("Dodge",
                         "Challenger",
                         2017,
                         43000,
                         30000,
-                        "Gun Metal")));
-
-
-
+                        "Gun Metal"));
+        carService.addCar(carList);
+        Mockito.verify(carRepository, times(1)).saveAll(carList);
     }
 }
