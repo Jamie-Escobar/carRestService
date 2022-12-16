@@ -42,7 +42,4 @@ public class CarsControllerTest {
         Mockito.verify(carService, Mockito.times(1)).addCar(Mockito.anyList());
     }
 
-
-    // next steps service unit tests
-
 }
