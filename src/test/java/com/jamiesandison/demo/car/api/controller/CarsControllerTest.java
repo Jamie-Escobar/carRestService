@@ -11,7 +11,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +42,13 @@ public class CarsControllerTest {
         Assertions.assertEquals("Database updated", response.getBody().get("description"));
 
         Mockito.verify(carService, Mockito.times(1)).addCar(Mockito.anyList());
+    }
+
+    @Test
+    void gettingListOfCars() {
+
+        ResponseEntity<List<Car>> listAndResponse = controller.getListOfCars();
+        Assertions.assertEquals(HttpStatus.OK, listAndResponse.getStatusCode());
     }
 
 }

@@ -7,4 +7,3 @@ Feature: test cars/admin
     Given client sends a "POST" request to "/cars/admin" endpoint
     Then response HttpStatus should be 201
     And response body should contain key "description" and value should be "Database updated"
-

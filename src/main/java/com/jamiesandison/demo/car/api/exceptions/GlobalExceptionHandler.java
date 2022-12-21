@@ -14,19 +14,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(Map.of("description", "Car already exists"), HttpStatus.CONFLICT);
     }
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, String>> missing_Attribute_Or_Malformed_Data() {
-
+    public ResponseEntity<Map<String, String>> handle_Missing_Attribute_Or_Malformed_Data() {
         return new ResponseEntity<>(Map.of("description", "Incorrect car data provided"), HttpStatus.BAD_REQUEST);
     }
 
-}
 
-//            malformed attribute
-//            brand: "BMW", <--- attribute to be a string
-//            "model": "X5",
-//            "year": 2022,
-//            "price": 80000,
-//            "mileage": 10000,
-//            "colour": "space grey"
+}
 
 

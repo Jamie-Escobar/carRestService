@@ -65,4 +65,10 @@ public class StepDefinitions {
         Assertions.assertTrue(passedResult.containsKey(expectedKey));
         Assertions.assertEquals(expectedVal, passedResult.get(expectedKey));
     }
+
+    @And("response body should contain list of cars and value should contain HttpStatus {int}")
+    public void responseBodyShouldContainListOfCarsAndValueShouldContainHttpStatus(int arg0) {
+
+
+    }
 }
