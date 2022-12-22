@@ -33,11 +33,6 @@ public class CarsController {
         return new ResponseEntity<>(Map.of("description", "Database updated"), HttpStatus.CREATED);
     }
 
-    /*
-     need to fix duplicates in the database add annotation with unique in tha attributes in car model
-    */
-
-
     @GetMapping("/admin")
     public ResponseEntity<List<Car>> getListOfCars() {
 

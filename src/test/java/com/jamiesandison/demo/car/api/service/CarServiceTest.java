@@ -36,7 +36,14 @@ public class CarServiceTest {
     }
 
     @Test
-    void exception_When_Data_Not_Valid() {
+    void throws_Correct_Exception_When_Data_Malformed_Or_Missing() {
+
+
+    }
+
+    @Test
+    void throws_Correct_Exception_For_Duplicates() {
+
 
     }
 }
