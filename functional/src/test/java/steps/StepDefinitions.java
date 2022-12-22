@@ -69,6 +69,6 @@ public class StepDefinitions {
     @And("response body should contain list of cars and value should contain HttpStatus {int}")
     public void responseBodyShouldContainListOfCarsAndValueShouldContainHttpStatus(int arg0) {
 
-
+        // implement this step definition for getting list of cars
     }
 }

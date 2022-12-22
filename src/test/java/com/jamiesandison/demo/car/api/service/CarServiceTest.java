@@ -2,8 +2,11 @@ package com.jamiesandison.demo.car.api.service;
 
 import com.jamiesandison.demo.car.api.model.Car;
 import com.jamiesandison.demo.car.api.repository.CarRepository;
+import jakarta.validation.ConstraintViolationException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -30,5 +33,10 @@ public class CarServiceTest {
                         "Gun Metal"));
         carService.addCar(carList);
         Mockito.verify(carRepository, times(1)).saveAll(carList);
+    }
+
+    @Test
+    void exception_When_Data_Not_Valid() {
+
     }
 }

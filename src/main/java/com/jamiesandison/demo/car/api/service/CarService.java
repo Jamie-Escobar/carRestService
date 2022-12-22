@@ -24,5 +24,4 @@ public class CarService {
     public List<Car> listOfCars() {
         return carRepository.findAll();
     }
-
 }
