@@ -33,11 +33,14 @@ public class CarsController {
         return new ResponseEntity<>(Map.of("description", "Database updated"), HttpStatus.CREATED);
     }
 
+    // fix Junit test as it's failing for missing/malformed and duplicates first thing to do!
+    // cucumber scenarios done
+    // implement cucumber step definitions for missing and malformed fields and attributes
+    // implement cucumber step definitions for duplicate data
+
     @GetMapping("/admin")
     public ResponseEntity<List<Car>> getListOfCars() {
 
         return new ResponseEntity<>(carService.listOfCars(), HttpStatus.OK);
     }
-
-    // need to check Junit tests created for the cars/admin endpoint and to check cucumber steps
 }
