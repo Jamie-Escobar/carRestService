@@ -26,7 +26,7 @@ public class CarsControllerTest {
     private CarService carService;
 
     @Test
-    void addCar_Returns_Response() {
+    void addCar_Returns_Response_201() {
 
         ResponseEntity<Map<String, String>> response = controller.addCars(List.of(
                 new Car(

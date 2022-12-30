@@ -34,7 +34,6 @@ public class CarsController {
     }
 
     // create Junit test for missing/malformed and duplicates
-    // fix and implement cucumber step definitions for missing and malformed fields and attributes
 
     @GetMapping("/admin")
     public ResponseEntity<List<Car>> getListOfCars() {

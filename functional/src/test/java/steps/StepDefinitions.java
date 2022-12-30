@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -75,5 +76,10 @@ public class StepDefinitions {
         requestData = mapper.writeValueAsString(dataTable);
     }
 
+    @Given("I want to add the following car with JSON {string}")
+    public void iWantToAddTheFollowingCarWithJSONBrand(String carJSON) {
+
+        requestData = String.valueOf(given().contentType(ContentType.JSON).body(carJSON));
+    }
 }
 
