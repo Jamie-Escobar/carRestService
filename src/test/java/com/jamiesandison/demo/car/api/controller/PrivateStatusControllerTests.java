@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 
 
 @SpringBootTest
-public class ControllerTests {
+public class PrivateStatusControllerTests {
 
     @Autowired
-    private Controller controller;
+    private PrivateStatusController controller;
     @Test
     void privateStatusResponse() {
 

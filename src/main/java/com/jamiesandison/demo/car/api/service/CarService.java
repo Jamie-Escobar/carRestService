@@ -6,6 +6,7 @@ import com.jamiesandison.demo.car.api.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -28,11 +29,16 @@ public class CarService {
     }
 
     public List<Car> listOfCars() {
-
         return carRepository.findAll();
     }
 
     private Car mapToEntity(Car car) {
-        return new Car(car.getBrand(), car.getModel(), car.getPrice(), car.getYear(), car.getMileage(), car.getColour());
+        return new Car(
+                car.getBrand(),
+                car.getModel(),
+                car.getPrice(),
+                car.getYear(),
+                car.getMileage(),
+                car.getColour());
     }
 }

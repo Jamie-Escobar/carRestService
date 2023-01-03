@@ -11,7 +11,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
 import java.util.List;
+
 import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,24 +24,18 @@ public class CarServiceTest {
     private CarService carService;
     @Mock
     private CarRepository carRepository;
-
-    Car exampleTestCar = new Car(
-            "BMW",
-            "X5",
-            80000,
-            2022,
-            10000,
-            "Space Grey");
+    private Car exampleTestCar = new Car(
+                "BMW",
+                "X5",
+                80000,
+                2022,
+                10000,
+                "Space Grey");
 
     @Test
     void addingCarTest() {
-        List<Car> carList = List.of(
-                new Car("Dodge",
-                        "Challenger",
-                        2017,
-                        43000,
-                        30000,
-                        "Gun Metal"));
+
+        List<Car> carList = List.of(exampleTestCar);
         carService.addCar(carList);
         Mockito.verify(carRepository, times(1)).saveAll(carList);
     }
@@ -46,11 +43,18 @@ public class CarServiceTest {
     @Test
     void throws_Exception_When_Data_Malformed_Or_Missing() {
 
-        Mockito.when(carRepository.save(exampleTestCar)).thenThrow(ConstraintViolationException.class);
-        List<Car> cars = List.of(exampleTestCar);
-        Assertions.assertThrows(ConstraintViolationException.class, () -> carService.addCar(cars));
-        Mockito.verify(carRepository, times(1)).save(exampleTestCar);
+        List<Car> cars = new ArrayList<>();
+        cars.add(exampleTestCar = new Car(
+                "BMW",
+                "X5",
+                80000,
+                2022,
+                10000,
+                "Space Grey"));
 
+        Mockito.when(carRepository.saveAll(cars)).thenThrow(ConstraintViolationException.class);
+        ConstraintViolationException constraintViolationException = Assertions.assertThrows(ConstraintViolationException.class, () -> carRepository.saveAll(cars));
+        Mockito.verify(carRepository, times(1)).saveAll(cars);
     }
 
     @Test

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequestMapping("/cars")
 @RestController
@@ -32,8 +33,6 @@ public class CarsController {
         carService.addCar(carList);
         return new ResponseEntity<>(Map.of("description", "Database updated"), HttpStatus.CREATED);
     }
-
-    // create Junit test for missing/malformed and duplicates
 
     @GetMapping("/admin")
     public ResponseEntity<List<Car>> getListOfCars() {
