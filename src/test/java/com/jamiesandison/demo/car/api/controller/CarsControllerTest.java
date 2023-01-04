@@ -11,9 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +25,7 @@ public class CarsControllerTest {
     @Test
     void addCar_Returns_Response_201() {
 
-        ResponseEntity<Map<String, String>> response = controller.addCars(List.of(
+        ResponseEntity<Map<String, String>> response = controller.addCar(List.of(
                 new Car(
                         "Ford",
                         "mustang",

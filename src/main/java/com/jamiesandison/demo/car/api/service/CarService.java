@@ -4,17 +4,15 @@ import com.jamiesandison.demo.car.api.exceptions.CarExistsException;
 import com.jamiesandison.demo.car.api.model.Car;
 import com.jamiesandison.demo.car.api.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Service
 public class CarService {
 
     @Autowired
     private final CarRepository carRepository;
-
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
@@ -29,7 +27,7 @@ public class CarService {
     }
 
     public List<Car> listOfCars() {
-        return carRepository.findAll();
+        return carRepository.findAll(Sort.by(Sort.Direction.ASC, "brand"));
     }
 
     private Car mapToEntity(Car car) {

@@ -9,10 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequestMapping("/cars")
 @RestController
@@ -28,7 +26,7 @@ public class CarsController {
     }
 
     @PostMapping("/admin")
-    public ResponseEntity<Map<String, String>> addCars(@RequestBody List<@Valid Car> carList) {
+    public ResponseEntity<Map<String, String>> addCar(@RequestBody List<@Valid Car> carList) {
         
         carService.addCar(carList);
         return new ResponseEntity<>(Map.of("description", "Database updated"), HttpStatus.CREATED);
@@ -39,4 +37,6 @@ public class CarsController {
 
         return new ResponseEntity<>(carService.listOfCars(), HttpStatus.OK);
     }
+
+    // start to implement retrieving cars from the database by brand, year, model, etc.
 }

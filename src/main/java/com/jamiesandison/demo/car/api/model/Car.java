@@ -12,6 +12,7 @@ public class Car {
     @Column(nullable = false)
     private String brand;
     @Column(nullable = false, unique = true)
+    @NotBlank
     private String model;
     @Column(name = "year_build")
     @Min(1000)
@@ -24,6 +25,7 @@ public class Car {
     @Column(nullable = false)
     private int mileage;
     @Column(nullable = false)
+    @NotBlank
     private String colour;
 
 
