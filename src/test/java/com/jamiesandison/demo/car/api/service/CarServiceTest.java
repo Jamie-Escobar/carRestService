@@ -63,5 +63,4 @@ public class CarServiceTest {
         Mockito.when(carRepository.existsByBrandAndModel(exampleTestCar.getBrand(), exampleTestCar.getModel())).thenReturn(false).thenReturn(true);
         Assertions.assertThrows(CarExistsException.class, () -> carService.addCar(List.of(exampleTestCar, exampleTestCar)));
     }
-
 }

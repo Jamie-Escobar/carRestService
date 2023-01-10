@@ -44,7 +44,7 @@ public class CarsControllerTest {
     @Test
     void getting_List_Of_Cars_Returns_Response_200() {
 
-        ResponseEntity<List<Car>> carListAndResponse = controller.getListOfCars();
+        ResponseEntity<List<Car>> carListAndResponse = controller.getCarOrCarList();
         Assertions.assertEquals(HttpStatus.OK, carListAndResponse.getStatusCode());
     }
 

@@ -25,8 +25,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handle_Missing_Attribute_Or_Malformed_Data() {
         return new ResponseEntity<>(Map.of("description", "Incorrect car data provided"), HttpStatus.BAD_REQUEST);
     }
-
-
 }
 
 

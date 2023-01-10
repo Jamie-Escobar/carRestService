@@ -7,7 +7,7 @@ import jakarta.validation.constraints.*;
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String brand;
@@ -109,7 +109,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "brand='" + brand + '\'' +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
                 ", price=" + price +
