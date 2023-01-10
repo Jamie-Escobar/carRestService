@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +45,14 @@ public class CarsControllerTest {
     @Test
     void getting_List_Of_Cars_Returns_Response_200() {
 
-        ResponseEntity<List<Car>> carListAndResponse = controller.getCarOrCarList();
+        ResponseEntity<List<Car>> carListAndResponse = controller.getCarOrCarList(
+                "Ford",
+                "Mustang",
+                2022,
+                4000,
+                10,
+                "magenta");
+
         Assertions.assertEquals(HttpStatus.OK, carListAndResponse.getStatusCode());
     }
 

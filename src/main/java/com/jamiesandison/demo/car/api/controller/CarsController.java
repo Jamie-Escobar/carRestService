@@ -59,7 +59,6 @@ public class CarsController {
         } else {
             cars = carService.getAllCars();
         }
-
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
