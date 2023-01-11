@@ -15,7 +15,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class CarServiceTest {
@@ -24,6 +26,8 @@ public class CarServiceTest {
     private CarService carService;
     @Mock
     private CarRepository carRepository;
+
+    private final List<Car> carList = new ArrayList<>();
     private Car exampleTestCar = new Car(
                 "BMW",
                 "X5",
@@ -47,12 +51,12 @@ public class CarServiceTest {
         cars.add(exampleTestCar = new Car(
                 "BMW",
                 "X5",
-                80000,
-                2022,
+                2001,
+                20000,
                 10000,
                 "Space Grey"));
 
-        Mockito.when(carRepository.saveAll(cars)).thenThrow(ConstraintViolationException.class);
+        when(carRepository.saveAll(cars)).thenThrow(ConstraintViolationException.class);
         ConstraintViolationException constraintViolationException = Assertions.assertThrows(ConstraintViolationException.class, () -> carRepository.saveAll(cars));
         Mockito.verify(carRepository, times(1)).saveAll(cars);
     }
@@ -60,7 +64,63 @@ public class CarServiceTest {
     @Test
     void throws_Exception_When_Duplicate_In_Database() {
 
-        Mockito.when(carRepository.existsByBrandAndModel(exampleTestCar.getBrand(), exampleTestCar.getModel())).thenReturn(false).thenReturn(true);
+        when(carRepository.existsByBrandAndModel(exampleTestCar.getBrand(), exampleTestCar.getModel())).thenReturn(false).thenReturn(true);
         Assertions.assertThrows(CarExistsException.class, () -> carService.addCar(List.of(exampleTestCar, exampleTestCar)));
+    }
+
+    @Test
+    void gettingAllCars() {
+
+        when(carService.getAllCars()).thenReturn(carList);
+        List<Car> allCars = carService.getAllCars();
+        Assertions.assertEquals(carList, allCars);
+    }
+
+    @Test
+    void gettingCarByBrand() {
+
+        when(carRepository.findByBrand(anyString())).thenReturn(carList);
+        List<Car> carByName = carService.getCarListByBrand("BMW");
+        Assertions.assertEquals(carByName, carList);
+    }
+
+    @Test
+    void gettingCarByModel() {
+
+        when(carRepository.findByModel(anyString())).thenReturn(carList);
+        List<Car> carByModel = carService.getCarListByModel("X5");
+        Assertions.assertEquals(carByModel, carList);
+    }
+
+    @Test
+    void gettingCarByYear() {
+
+        when(carRepository.findByYear(anyInt())).thenReturn(carList);
+        List<Car> carByYear = carService.getCarListByYear(2001);
+        Assertions.assertEquals(carByYear, carList);
+    }
+
+    @Test
+    void gettingCarByPrice() {
+
+        when(carRepository.findByPrice(anyInt())).thenReturn(carList);
+        List<Car> carByPrice = carService.getCarListByPrice(20000);
+        Assertions.assertEquals(carByPrice, carList);
+    }
+
+    @Test
+    void gettingCarByMileage() {
+
+        when(carRepository.findByMileage(anyInt())).thenReturn(carList);
+        List<Car> carByMileage = carService.getCarListByMileage(10000);
+        Assertions.assertEquals(carByMileage, carList);
+    }
+
+    @Test
+    void gettingCarByColour() {
+
+        when(carRepository.findByColour(anyString())).thenReturn(carList);
+        List<Car> carByColour = carService.getCarListByColour("Space Grey");
+        Assertions.assertEquals(carByColour, carList);
     }
 }
