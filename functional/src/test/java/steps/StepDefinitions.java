@@ -12,6 +12,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Assertions;
 import java.util.*;
+import java.util.stream.Collectors;
+
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -80,6 +82,21 @@ public class StepDefinitions {
     public void iWantToAddTheFollowingCarWithJSONBrand(String carJSON) {
 
         requestData = String.valueOf(given().contentType(ContentType.JSON).body(carJSON));
+    }
+
+    @When("the client GETs the endpoint {string} with query {string}")
+    public void theClientGETsTheEndpointCarsAdminWithQueryModelX(String endpoint, String query) {
+
+        Map<String, String> queryParams = splitQueryParams(query);
+        response = given().queryParams(queryParams).get(endpoint);
+    }
+
+    private Map<String, String> splitQueryParams(String query) {
+
+        String[] queryParts = query.split("&");
+        return Arrays.stream(queryParts)
+                .map((queryKeyValue) -> queryKeyValue.split("="))
+                .collect(Collectors.toMap(splitString -> splitString[0], splitString -> splitString.length > 1 ? splitString[1] : ""));
     }
 }
 
