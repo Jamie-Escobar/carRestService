@@ -32,7 +32,7 @@ public class CarsController {
 
 
     @GetMapping("/admin")
-    public ResponseEntity<List<Car>> getCarOrCarList(
+    public ResponseEntity<List<Car>> getCar(
             @RequestParam(value = "brand", required = false) String brand,
             @RequestParam(value = "model", required = false) String model,
             @RequestParam(value = "year", required = false) Integer year,
@@ -60,6 +60,9 @@ public class CarsController {
         return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
-    // tidy up cucumber functional tests but they have passed
-
+    // need to create an exception handler for = "description": "Incorrect query parameter provided" (done)
+    // to return a 400 status code with the message (done)
+    // to return a message for missing data in the url (not null or whitespaces)
+    // query param to contains letters when it should be an Integer error
+    // sort out task for gradle build to get jar file
 }

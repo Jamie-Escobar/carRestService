@@ -45,7 +45,7 @@ public class CarsControllerTest {
     @Test
     void getting_List_Of_Cars_Returns_Response_200() {
 
-        ResponseEntity<List<Car>> carListAndResponse = controller.getCarOrCarList(
+        ResponseEntity<List<Car>> carListAndResponse = controller.getCar(
                 "Ford",
                 "Mustang",
                 2022,
